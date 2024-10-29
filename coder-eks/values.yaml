@@ -21,12 +21,19 @@ coder:
     # (Optional) For production deployments the access URL should be set.
     # If you're just trying Coder, access the dashboard via the service IP.
     - name: CODER_ACCESS_URL
-      value: "http://k8s-coder-coder-75b23bc9ec-d831596861d9112e.elb.us-east-1.amazonaws.com"
+      value: "https://internal-k8s-coder-coder-4a2ea53705-1778305858.us-east-1.elb.amazonaws.com/"
 
   #tls:
   #  secretNames:
   #    - my-tls-secret-name
   service:
-    externalTrafficPolicy: Local
+    type: NodePort
     sessionAffinity: None
-    annotations: { service.beta.kubernetes.io/aws-load-balancer-type: "nlb" }
+
+  ingress:
+    # coder.ingress.enable -- Whether to create the Ingress object. If using an
+    # Ingress, we recommend not specifying coder.tls.secretNames as the Ingress
+    # will handle TLS termination.
+    enable: true
+    # coder.ingress.className -- The name of the Ingress class to use.
+    className: "alb"
