@@ -7,7 +7,7 @@
     "labels": {
       "app.kubernetes.io/instance": "coder",
       "app.kubernetes.io/name": "coder"
-    },
+    }
   },
   "spec": {
     "replicas": 1,
@@ -37,7 +37,7 @@
             ],
             "ports": [
               {
-                "containerPort": 8080,
+                "containerPort": 8080
               }
             ],
             "env": [
@@ -64,13 +64,13 @@
               },
               {
                 "name": "CODER_ACCESS_URL",
-                "value": "http://internal-k8s-coder-coder-4a2ea53705-357360775.us-east-1.elb.amazonaws.com"
+                "value": "http://k8s-coder-coder-36b2758172-2060281254.us-east-1.elb.amazonaws.com"
               }
             ],
             "livenessProbe": {
               "httpGet": {
                 "path": "/healthz",
-                "port": "http",
+                "port": 8080,
                 "scheme": "HTTP"
               },
               "timeoutSeconds": 1,
@@ -81,7 +81,7 @@
             "readinessProbe": {
               "httpGet": {
                 "path": "/healthz",
-                "port": "http",
+                "port": 8080,
                 "scheme": "HTTP"
               },
               "timeoutSeconds": 1,
@@ -107,8 +107,6 @@
         "restartPolicy": "Always",
         "terminationGracePeriodSeconds": 60,
         "dnsPolicy": "ClusterFirst",
-        "serviceAccountName": "coder",
-        "serviceAccount": "coder",
         "securityContext": {},
         "affinity": {
           "podAntiAffinity": {

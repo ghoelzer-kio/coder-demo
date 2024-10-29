@@ -31,3 +31,7 @@ helm install coder coder-v2/coder \
     --values values.yaml \
     --version 2.15.4
    
+#Check Rolebindings
+kubectl auth can-i --list --as=system:serviceaccount:coder:coder-db-postgresql
+kubectl get rolebindings -n coder -o yaml | grep -A 5 "serviceAccount: coder-db-postgresql"
+kubectl get clusterrolebindings -o yaml | grep -A 5 "serviceAccount: coder-db-postgresql"
