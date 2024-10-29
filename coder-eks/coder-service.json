@@ -1,0 +1,26 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "coder",
+      "namespace": "coder",
+      "labels": {
+        "app.kubernetes.io/instance": "coder"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "port": 80,
+          "targetPort": 8080,
+          "protocol": "TCP"
+        }
+      ],
+      "selector": {
+        "app.kubernetes.io/instance": "coder",
+        "app.kubernetes.io/name": "coder"
+      },
+      "type": "NodePort",
+      "sessionAffinity": "None"
+    }
+  }

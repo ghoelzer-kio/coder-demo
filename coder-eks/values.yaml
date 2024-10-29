@@ -21,7 +21,7 @@ coder:
     # (Optional) For production deployments the access URL should be set.
     # If you're just trying Coder, access the dashboard via the service IP.
     - name: CODER_ACCESS_URL
-      value: "https://internal-k8s-coder-coder-4a2ea53705-1778305858.us-east-1.elb.amazonaws.com/"
+      value: "http://internal-k8s-coder-coder-4a2ea53705-357360775.us-east-1.elb.amazonaws.com"
 
   #tls:
   #  secretNames:

@@ -29,4 +29,5 @@ helm repo add coder-v2 https://helm.coder.com/v2
 helm install coder coder-v2/coder \
     --namespace coder \
     --values values.yaml \
-    --version 2.15.0
+    --version 2.15.4
+   
